@@ -11,6 +11,7 @@ import sys
 
 from pkg_resources import VersionConflict, require
 from setuptools import setup
+from setuptools import find_packages
 
 try:
     require('setuptools>=38.3')
@@ -21,3 +22,10 @@ except VersionConflict:
 
 if __name__ == "__main__":
     setup(use_pyscaffold=True)
+
+setup(name='stardot_overlay',
+      version='0.1',
+      description='extract text from stardot image overlay',
+      license='MIT',
+      packages=['stardot_overlay'],
+      zip_safe=False)
