@@ -12,6 +12,7 @@ If the metadata file already exists then just exit.
 """
 
 import os
+import grp
 import sys
 import argparse
 
@@ -52,6 +53,13 @@ if __name__ == "__main__":
         print("File list:")
         for file in inlist:
             print(file)
+
+    # get user-id
+    uid = os.getuid()
+    
+    # get nogroup group id for setting ownership
+    groupinfo = grp.getgrnam("noroup")
+    gid = groupinfo[2]
     
     for inpath in inlist:
         
@@ -87,6 +95,9 @@ if __name__ == "__main__":
         if not dryrun:
             with open(mpath, 'w') as f:
                 f.write("exposure={}\n".format(exposure))
+
+            if uid == 0:
+                os.chown(mpath, uid, gid)
 
     
     
