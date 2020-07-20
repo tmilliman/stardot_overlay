@@ -58,7 +58,7 @@ if __name__ == "__main__":
     uid = os.getuid()
     
     # get nogroup group id for setting ownership
-    groupinfo = grp.getgrnam("noroup")
+    groupinfo = grp.getgrnam("nogroup")
     gid = groupinfo[2]
     
     for inpath in inlist:
