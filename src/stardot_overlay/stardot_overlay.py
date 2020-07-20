@@ -4,7 +4,7 @@ import sys
 import os
 import pickle as _pickle
 from importlib.resources import read_binary
-
+os.environ["OMP_NUM_THREADS"] = "1"
 import numpy as _np
 
 import skimage as _skimage
