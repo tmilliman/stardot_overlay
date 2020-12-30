@@ -236,10 +236,13 @@ def get_exposure(fname):
     if "Exposure:" in header_contents['line4']:
         exposure_line = header_contents['line4']
         return exposure_line[exposure_line.index(':') + 1:]
-    elif "Exposure:" in header_contents['line3']:  # quickbird style
+    elif "xposure:" in header_contents['line4']:   # turkeypointdbf
+        exposure_line = header_contents['line4']
+        return exposure_line[exposure_line.index(':') + 1:]
+    elif "Exposure:" in header_contents['line3']:  # quickbird
         exposure_line = header_contents['line3']
         return exposure_line[exposure_line.index(':') + 1:]
-    elif "Expsure:" in header_contents['line3']:  # quickbird style
+    elif "Expsure:" in header_contents['line3']:  # quickbird
         exposure_line = header_contents['line3']
         return exposure_line[exposure_line.index(':') + 1:]
     elif "Exposure:" in header_contents['line2']:  # might as well
